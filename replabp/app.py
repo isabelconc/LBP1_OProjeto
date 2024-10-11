@@ -1,11 +1,9 @@
-from flask import Flask
-from controllers import login_blueprint
+from flask import Flask, render_template, request, session
+from controllers import controller_blueprint
 
 app = Flask(__name__)
-app.secret_key = 'secret_key'  # Necessário para sessões
-
-# Registra o blueprint de login e cadastro
-app.register_blueprint(login_blueprint)
+app.register_blueprint(controller_blueprint)
+app.secret_key = 'secret_key'  
 
 if __name__ == '__main__':
     app.run(debug=True)
