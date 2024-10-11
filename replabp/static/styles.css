@@ -5,15 +5,6 @@ body {
     padding: 0;
 }
 
-.container {
-    width: 100%;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-}
-
 h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -22,43 +13,4 @@ h1 {
 form {
     display: flex;
     flex-direction: column;
-}
-
-label {
-    margin-bottom: 5px;
-}
-
-input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-}
-
-button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li.success {
-    color: green;
-}
-
-li.danger {
-    color: red;
-}
-
-li.info {
-    color: blue;
 }
