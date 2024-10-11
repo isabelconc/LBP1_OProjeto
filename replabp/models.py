@@ -1,14 +1,11 @@
-# models.py
+class Usuario:
+    def __init__(self, nome, senha, papel):
+        self.nome = nome
+        self.senha = senha
+        self.papel = papel
 
-users = {
-    "admin": "password123"
-}
 
-def check_login(username, password):
-    return users.get(username) == password
+users_lista = []
+novo_user = Usuario("isabel", "123", "admin")
+users_lista.append(novo_user)
 
-def register_user(username, password):
-    if username in users:
-        return False  # Usuário já existe
-    users[username] = password
-    return True  # Registro bem-sucedido
