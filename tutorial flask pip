@@ -1,0 +1,6 @@
+mkdir nome_da_pasta
+python3 -m venv nome_do_ambiente
+source nome_do_ambiente/bin/activate
+(nome_do_ambiente) xxxxx pip install flask
+flask --version
+# dps jogar a pasta la no vscode
