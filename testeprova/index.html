@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Tarefas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .task {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .task-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .task-date {
+            color: #999;
+            font-size: 14px;
+        }
+        .flash {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid;
+        }
+        .flash-success {
+            border-color: green;
+            background-color: #d4edda;
+            color: green;
+        }
+        .flash-error {
+            border-color: red;
+            background-color: #f8d7da;
+            color: red;
+        }
+        .flash-info {
+            border-color: blue;
+            background-color: #d1ecf1;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <h1>Agenda de Tarefas</h1>
+    <form action="/add" method="POST">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title">
+        <br>
+        <label for="description">Descrição:</label>
+        <input type="text" id="description" name="description">
+        <br>
+        <label for="due_date">Data de Vencimento:</label>
+        <input type="date" id="due_date" name="due_date">
+        <br>
+        <button type="submit">Adicionar Tarefa</button>
+    </form>
+    
+    <h2>Tarefas</h2>
+    {% for task in tasks %}
+        <div class="task">
+            <div class="task-title">{{ task.title }}</div>
+            <div class="task-date">{{ task.due_date }}</div>
+            <div class="task-desc">{{ task.description }}</div>
+        </div>
+    {% endfor %}
+    
+    <p>Total de Tarefas: {{ total_tasks }}</p>
+    
+    <a href="/logout">Deslogar</a>
+</body>
+</html>
