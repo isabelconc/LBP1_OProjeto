@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Produtos</title>
+    <script>
+        const button = document.querySelector("button")
+        const modal = document.querySelector("dialog")
+        const buttonClose = document.querySelector("dialogbutton")
+
+        button.onclick = function() {
+            modal.showModal();
+        }
+
+        buttonClose.onclick = function() {
+            modal.close()
+        }
+    </script>
+</head>
+<body>
+    <h1>Lista de Produtos</h1>
+    <ul>
+        {% for product in products %}
+        <li>
+            <strong>{{ product.name }}</strong>
+            <button id="{{ product.id }}">Ver Detalhes</button>
+            <dialog>
+                <h2>Produto 1</h2>
+                <p> abcdefghijklmnopqrstuvwxyz </p>
+                <button> Fechar </button>
+            </dialog>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div>
+        {% if page > 1 %}
+        <a href="{{ url_for('produtos.index', page = page - 1) }}">Página Anterior</a>
+        {% endif %}
+            <span>Página {{ page }} de {{total_pages}}</span>
+        {% if page < total_pages %}
+        <a href="{{ url_for('produtos.index', page = page + 1) }}">Próxima Página</a>
+        {% endif %}
+    </div>
+
+    
+</body>
+</html>
